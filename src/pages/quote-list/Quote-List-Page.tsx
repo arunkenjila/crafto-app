@@ -3,6 +3,7 @@ import "./QuoteList.css";
 import { QuoteService } from "../../services/quote.service";
 import { Quote } from "../../utils/modal";
 import QuoteCard from "../../components/quote-card/Quote-Card";
+import { useNavigate } from "react-router-dom";
 
 const quotesService = new QuoteService();
 
@@ -72,6 +73,9 @@ function QuoteListPage() {
       updatedAt: "2024-07-02T06:55:59.000Z",
     },
   ]);
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     getQuotes();
   }, []);
@@ -80,13 +84,17 @@ function QuoteListPage() {
     const data = await quotesService.getQuotes();
   }
 
+  function gotoQuoteCreationPage() {
+    navigate("/create");
+  }
+
   return (
-    <div className="container-fluid">
+    <div className="container-fluid p-relative">
       <div className="header mt-2">
         <header>Quotes</header>
       </div>
       <hr></hr>
-      <div className="quotes-list d-flex flex-row mt-4 ps-3 pe-3">
+      <div className="container quotes-list d-flex flex-row mt-4 ps-3 pe-3">
         {quotes.map((quote: Quote) => (
           <QuoteCard
             key={quote.id}
@@ -96,6 +104,11 @@ function QuoteListPage() {
             username={quote.username}
           />
         ))}
+      </div>
+      <div className="action-button-container">
+        <div className="action-button" onClick={gotoQuoteCreationPage}>
+          +
+        </div>
       </div>
     </div>
   );

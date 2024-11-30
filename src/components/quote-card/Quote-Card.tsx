@@ -9,8 +9,8 @@ export default function QuoteCard({ text, mediaUrl, username, createdAt }) {
         <span className="text">{text}</span>
       </div>
       <div className="footer d-flex flex-row">
-        <span>{username}</span>
-        <span>{createdAt.split("T")[0]}</span>
+        <span className="user-name">{username}</span>
+        <span className="date">{createdAt.split("T")[0]}</span>
       </div>
     </div>
   );
