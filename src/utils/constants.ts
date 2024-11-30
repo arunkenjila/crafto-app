@@ -1,3 +1,1 @@
-const constants = {};
-
-export default constants;
+export const BASE_URL = "https://assignment.stage.crafto.app";

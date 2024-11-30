@@ -3,8 +3,11 @@ import { Route, Router, Routes } from "react-router-dom";
 import LoginPage from "./pages/login/LoginPage";
 import QuoteListPage from "./pages/quote-list/Quote-List-Page";
 import QuoteCreationPage from "./pages/quote-creation/Quote-Creation-Page";
+import { initiateAxiosInterceptor } from "./utils/methods";
 
 function App() {
+  initiateAxiosInterceptor();
+
   return (
     <>
       <Routes>
